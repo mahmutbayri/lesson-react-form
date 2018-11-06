@@ -28,13 +28,19 @@ class PostShow extends Component {
 
         return (
             <div>
-                <Link to="/">Back to index</Link>
-                <button
-                    className="btn btn-danger pull-xs-right"
-                    onClick={this.onDeleteClick.bind(this)}
-                >
-                    Delete Post
-                </button>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li style={{width: '100%'}}>
+                            <Link to="/">Back to index</Link>
+                            <button
+                                className="btn btn-sm btn-danger float-right"
+                                onClick={this.onDeleteClick.bind(this)}
+                            >
+                                Delete Post
+                        </button>
+                        </li>
+                    </ol>
+                </nav>
                 <h3>{post.title}</h3>
                 <h6>{post.categories}</h6>
                 <p>{post.content}</p>

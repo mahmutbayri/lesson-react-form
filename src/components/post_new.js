@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
-import {Field, reduxForm} from 'redux-form';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {createPost} from "../actions";
+import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createPost } from "../actions";
 
 
 class PostNew extends Component {
 
     renderField(field) {
 
-        const {meta: {touched, error}} = field;
+        const { meta: { touched, error } } = field;
         const className = `form-group ${touched && error ? 'has-danger' : ''}`
 
         return (
@@ -34,7 +34,7 @@ class PostNew extends Component {
     }
 
     render() {
-        const {handleSubmit} = this.props;
+        const { handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 <Field
@@ -52,8 +52,10 @@ class PostNew extends Component {
                     name="content"
                     component={this.renderField}
                 />
-                <button type="submit" className="btn btn-primary">Submit</button>
-                <Link to="/" className="btn btn-danger">Cancel</Link>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <Link to="/" className="btn btn-danger">Cancel</Link>
+                </div>
             </form>
         )
     }
@@ -81,5 +83,5 @@ export default reduxForm({
     validate: validate,
     form: 'PostNewForm',
 })(
-    connect(null, {createPost})(PostNew)
+    connect(null, { createPost })(PostNew)
 );
