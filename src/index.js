@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import {Provider} from 'react-redux';
 import ReduxPromise from 'redux-promise';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 
 import reducers from './reducers';
 
@@ -15,13 +15,13 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
-        <BrowserRouter>
+        <Router>
             <Switch>
                 <Route path="/posts/new" component={PostNew} />
                 <Route path="/posts/:id" component={PostShow} />
                 <Route  path="/" component={PostIndex} />
             </Switch>
-        </BrowserRouter>
+        </Router>
     </Provider>,
     document.querySelector('#root'),
 );
